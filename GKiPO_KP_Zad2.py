@@ -21,12 +21,10 @@ def show_histograms(image, title="Histogram"):
     plt.figure(figsize=(12, 4))
     plt.suptitle(title)
 
-    # cały obraz
     plt.subplot(1, 4, 1)
     plt.hist(img_arr.flatten(), bins=256)
     plt.title("Cały obraz")
 
-    # kanały RGB
     labels = ["Red", "Green", "Blue"]
     for i in range(3):
         plt.subplot(1, 4, i + 2)
@@ -63,7 +61,6 @@ def improve_quality(image):
         min_val = channel.min()
         max_val = channel.max()
 
-        # zabezpieczenie przed dzieleniem przez zero
         if max_val > min_val:
             result[:, :, i] = (channel - min_val) * 255 / (max_val - min_val)
         else:
@@ -94,3 +91,4 @@ if __name__ == "__main__":
 
     else:
         print("✔ Obraz nie wymaga poprawy")
+
